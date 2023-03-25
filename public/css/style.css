@@ -1,0 +1,21 @@
+body{
+    color: black;
+    font-family: 'Shantell Sans', cursive;
+     /* Ubicación de la imagen */
+     background-image: url("https://img.freepik.com/foto-gratis/fondo-acuarela-pintada-mano-forma-cielo-nubes_24972-1095.jpg"); 
+     /* La imagen de fondo se reescala automáticamente con el cambio del ancho de ventana del navegador */
+     background-size:cover;
+      /* Para que la imagen de fondo no se repita */
+     background-repeat:no-repeat;
+      /* Para dejar la imagen de fondo centrada, vertical y horizontalmente */
+     background-position:center center;
+      /* La imagen se fija en la ventana de visualización para que la altura de la imagen no supere a la del contenido */
+     background-attachment: fixed;
+      /* Se muestra un color de fondo mientras se está cargando la imagen de fondo o si hay problemas para cargarla */
+    background-color: #6699;
+
+    
+}
+button {
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif; 
+}
