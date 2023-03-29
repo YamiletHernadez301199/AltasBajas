@@ -2,27 +2,25 @@
 @section('contenido')
     <div class="container my-4">
         <h2>
-            Altas y Bajas
+            Actualizar
         </h2>
         <div class="row my-4">
             <div class="col">
                 
-                <form action="/store" method="post" >
+                <form action="{{ route('update', $items->id)}}" method="post" >
                     @csrf
-                    @method('POST')
+                    @method('PUT')
                     <div class="row g-2" >
                         <div class="col-md">
-                            <label for="exampleFormControlTextarea1" class="form-label">Selecciona el tipo de accion a realizar</label>
-                            <select class="form-select" aria-label="Default select example" name="tipo" id="tipo" required>
-                                {{-- <option>Selecciona el tipo de acción a realizar </option> --}}
+                            <select class="form-select my-4" aria-label="Default select example" name="tipo" id="tipo" required>
+                                <option value="{{ $items->tipo}}" selected disabled>{{ $items->tipo}}</option>
                                 <option value="Gasto">Gasto</option>
                                 <option value="Ganancia">Ganancia</option>
                             </select>                            
                         </div>
                         <div class="col-md">
-                            <label for="exampleFormControlTextarea1" class="form-label">Elige la categoria</label>
-                            <select class="form-select" aria-label="Default select example" name="categoria" id="categoria" required>
-                                {{-- <option selected>Categoria</option> --}}
+                            <select class="form-select my-4" aria-label="Default select example" name="categoria" id="categoria" required>
+                                <option value="{{ $items->categoria}}" selected disabled>{{ $items->categoria}}</option>
                                 <option value="Soporte">Soporte</option>
                                 <option value="Desarrollo">Desarrollo</option>
                                 <option value="Cine">Cine</option>
@@ -47,27 +45,25 @@
                             <div class="">
                                 <label for="exampleFormControlInput1" class="form-label">Cantidad <i class="fa-solid fa-hand-holding-dollar"></i></label>
                                 <input type="number" name="cantidad" id="cantidad"
-                                class="form-control" placeholder="Escriba una cantidad">
+                                class="form-control" placeholder="Escriba una cantidad" value="{{ $items->cantidad}}">
                             </div>
                         </div>
                         <div class="col-md">
                             <div class="my-1">
-                                <label for="exampleFormControlTextarea1" class="form-label">Descripción <i class="fa-solid fa-address-book fa-lg"></i></label>
-                                <textarea class="form-control" name="descripcion" id="descripcion" rows="3"></textarea>
+                                <label for="descripcion" class="form-label">Descripción</label>
+                                <textarea class="form-control" name="descripcion" id="descripcion" rows="3" placeholder="Descripcion">{{$items->descripcion}}</textarea>
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn  btn-sm btn-primary text-decoration-none text-white border border-2 rounded" id="add-btn">
-                        Guardar
-                        <i class="fa-solid fa-download"></i>
+                    <button type="submit" class="btn  btn-sm btn-primary text-decoration-none text-white border border-2 rounded" id="edit-btn">
+                        Actualizar
+                        <i class="fa-solid fa-pen-to-square"></i>
                     </button>
-                    
                 </form>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                     <a href="/" class="btn btn-success me-md-2">Regresar
                         <i class="fa-solid fa-rotate-left"></i>
                     </a>
-                    
                 </div>
             </div>
         </div>

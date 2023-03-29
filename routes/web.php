@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [Informacion::class,'index']);
+Route::get('/', [Informacion::class,'index']) ->name('datos.index');
 Route::get('/create', [Informacion::class,'create']);
 Route::post('/store',[Informacion::class,'store']);
+Route::delete('/eliminar/{id}',[Informacion::class,'destroy']) ->name('datos.delete');
+Route::get('/edit/{id}', [Informacion::class, 'edit'])->name('edit');
+Route::put('/update/{id}', [Informacion::class, 'update'])->name('update');

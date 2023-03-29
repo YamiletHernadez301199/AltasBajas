@@ -1,8 +1,5 @@
-const { default: axios } = require("axios");
-const { default: Swal } = require("sweetalert2");
-
 $(document).ready(function () {
-  $('#tabla').dataTable({
+  $("#Mytabla").dataTable({
     language: {
       "lengthMenu": "Mostrar _MENU_ registros por página",
       "zeroRecords": "Ningún dato disponible en esta tabla - lo siento",
@@ -20,71 +17,82 @@ $(document).ready(function () {
       },
     }
   });
+
+  $("#add-btn").click(() => {
+    let tipo = $("#tipo").val();
+    let categoria = $("#categoria").val();
+    let cantidad = $("#cantidad").val();
+    let descripcion = $("#descripcion").val();
+
+    if (cantidad === "" || descripcion === '') {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Los campos son obligatorios!',
+      })
+      return false;
+    } else {
+      Swal.fire({
+        icon: 'success',
+        title: 'Datos guardados!!!',
+        timer: 4000,
+        timerProgressBar: true,
+        showConfirmButton: false,
+      })
+    }
+
+  })
+
+  
+  $('.formulario').submit(function(e){
+    e.preventDefault();
+
+    swal.fire({
+      title: "¿Está seguro?",
+        text: "Esta acción no se puede deshacer.",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Sí, eliminar",
+        cancelButtonText: "Cancelar"
+    }).then((result) => {
+      if (result.value) {
+        Swal.fire(
+          {
+            icon: 'success',
+            title: 'Eliminado!!',
+            showConfirmButton: false,
+            timer: 4500
+          }
+        )
+        this.submit();
+      }
+    });
+  
+  })
+  $("#edit-btn").click(() => {
+    let tipo = $("#tipo").val();
+    let categoria = $("#categoria").val();
+    let cantidad = $("#cantidad").val();
+    let descripcion = $("#descripcion").val();
+
+    if (cantidad === "" || descripcion === '') {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Los campos son obligatorios!',
+      })
+      return false;
+    } else {
+      Swal.fire({
+        icon: 'success',
+        title: 'Datos Actualizados!!!',
+        timer: 4000,
+        timerProgressBar: true,
+        showConfirmButton: false,
+      })
+    }
+
+  })
+
 })
-
-$(document).ready(function () {
-  $('#myTable').DataTable();
-});
-
-$(document).ready(function () {
-  $('#add-btn').click(function () {
-    console.log('funciona');
-    
-
-    // var tipo = $('#tipo').val();
-    // var categoria = $('#categoria').val();
-    // var cantidad = $('#cantidad').val();
-    // var descripcion = $('#descripcion').val();
-    // $.ajax({
-    //   type: "POST",
-    //   url: "{{ route('store') }}",
-    //   data: {
-    //     _token: "{{ csrf_token() }}",
-    //     tipo: tipo,
-    //     categoria: categoria,
-    //     cantidad: cantidad,
-    //     descripcion: descripcion
-    //   },
-    //   success: function (response) {
-    //     Swal.fire({
-    //       position: 'top-center',
-    //       icon: 'success',
-    //       title: 'Your work has been saved',
-    //       showConfirmButton: false,
-    //       timer: 1500
-    //     })
-    //   }
-
-    // })
-
-    // axios.post('/store', {
-    //   tipo,
-    //   categoria,
-    //   cantidad,
-    //   descripcion
-    // })
-    // .then(function (response) {
-    //   Swal.fire({
-    //     title: 'Exito!!! xd',
-    //     text: response.data.mensaje,
-    //     icon: "success",
-    //     confirmButtonText: 'Guardar'
-    //   })
-    // })
-    // .catch(function(error){
-    //   Swal.fire({
-    //     title: 'Error!!! :c',
-    //     text: error.response.data.mensaje,
-    //     icon: "danger",
-    //     confirmButtonText: 'Guardar'
-    //   })
-    // })
-
-
-  });
-})
-
-
-
-
-
