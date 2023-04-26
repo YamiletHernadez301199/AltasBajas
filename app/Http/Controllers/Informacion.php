@@ -12,11 +12,17 @@ class Informacion extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function __construct()
+    {
+        //el index es de mi carpteta cliente 
+        $this->middleware(['auth'])->only(['index']);
+    }
+
+    public function index (Request $request)
     {
         $titulo = 'Inicio';
         $items = Info::all();
-        return view('index', compact('titulo','items'));
+        return view('modules/clientes/index', compact('titulo','items'));
     }
 
     /**
@@ -45,7 +51,7 @@ class Informacion extends Controller
         $item->cantidad= $request->cantidad;
         $item->descripcion= $request->descripcion;
         $item->save();
-        return redirect('/');
+        return redirect('/inicio');
         
     }
 
@@ -88,7 +94,7 @@ class Informacion extends Controller
         $item->cantidad= $request->cantidad;
         $item->descripcion= $request->descripcion;
         $item->save();
-        return redirect('/');
+        return redirect('/inicio');
     }
 
     /**

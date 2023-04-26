@@ -1,9 +1,15 @@
 @extends('layouts/main')
 @section('contenido')
 <div class="container-fluid">
-    <h1 class="m-4">
+    <h1 class="m-4 text-center">
         Altas y Bajas
     </h1>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <a href="{{ route('logout') }}" class="btn btn-danger">
+            <i class="fa-solid fa-arrow-left"></i>
+            Salir
+        </a>
+    </div>
     <div class="row m-4">
         <div class="col">
             <a href="/create" class="btn btn-primary">
